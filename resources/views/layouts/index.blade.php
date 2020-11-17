@@ -8,9 +8,10 @@
         <livewire:styles>
     </head>
     <body class="bg-gray-400">
-        
-            <livewire:registeration>
-            <livewire:scripts>
-        
+    
+        <livewire:registeration>
+
+        <livewire:scripts>
+
     </body>
 </html>
