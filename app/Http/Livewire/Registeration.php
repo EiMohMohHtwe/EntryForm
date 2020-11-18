@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Register;
+use App\Models\Applicant;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Symfony\Component\Console\Tester\ApplicationTester;
 
 class Registeration extends Component
 {
@@ -16,9 +17,17 @@ class Registeration extends Component
     public $address;
     public $email;
     public $confirm_email;
+    public $gender;
     public $hobby;
     public $phone;
     public $favorite_subject;
+    public $cooking;
+    public $group_life_experience;
+    public $color_blindness;
+    public $tattoo;
+    public $drinking;
+    public $smoking;
+    public $medical_history;
     public $gpa;
     public $roll_number;
     public $jhs_period_from;
@@ -49,24 +58,32 @@ class Registeration extends Component
     {
         $this->validate([
             'image' => 'image|max:1024',
-            'hs_file' => 'image|max:1024',
-            'univ_file' => 'image|max:1024',
+            'hs_file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048',
+            'univ_file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
         ]);
 
         $this->image->store('images');
         $this->hs_file->store('images');
         $this->univ_file->store('images');
 
-        $register = new Register();
+        $register = new Applicant();
 
         $register->name = $this->name;
         $register->birthday = $this->birthday;
         $register->address = $this->address;
         $register->email = $this->email;
         $register->confirm_email = $this->confirm_email;
+        $register->gender = $this->gender;
         $register->hobby = $this->hobby;
         $register->phone = $this->phone;
         $register->favorite_subject = $this->favorite_subject;
+        $register->cooking = $this->cooking;
+        $register->group_life_experience = $this->group_life_experience;
+        $register->color_blindness = $this->color_blindness;
+        $register->tattoo = $this->tattoo;
+        $register->drinking = $this->drinking;
+        $register->smoking = $this->smoking;
+        $register->medical_history = $this->medical_history;
         $register->gpa = $this->gpa;
         $register->roll_number = $this->roll_number;
         $register->jhs_period_from = $this->jhs_period_from;

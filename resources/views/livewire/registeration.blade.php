@@ -82,12 +82,12 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="gender" value="male" checked>
-                                <span class="ml-2">Male</span>
-                                    </label>
-                                    <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="gender" value="female">
-                                <span class="ml-2">Female</span>
+                                <input type="radio" class="form-radio" name="gender" value="male" wire:model="gender" checked>
+                                <span class="ml-2" for="gender">Male</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                    <input type="radio" class="form-radio" name="gender" value="female" wire:model="gender">
+                                <span class="ml-2" for="gender">Female</span>
                             </label>
                         </div>
                     </div>
@@ -175,12 +175,12 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="cooking" value="cooking" checked>
-                                <span class="ml-2">No</span>
+                                <input type="radio" class="form-radio" name="cooking" value="no" wire:model="cooking" checked>
+                                <span class="ml-2" for="cooking">No</span>
                             </label>
                             <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="cooking" value="cooking">
-                                <span class="ml-2">Yes</span>
+                                    <input type="radio" class="form-radio" name="cooking" value="yes" wire:model="cooking">
+                                <span class="ml-2" for="cooking">Yes</span>
                             </label>
                         </div>
                     </div>
@@ -192,11 +192,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="group_life_experience" value="group_life_experience" checked>
+                                <input type="radio" class="form-radio" name="group_life_experience" value="no" wire:model="group_life_experience" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="group_life_experience" value="group_life_experience">
+                                    <input type="radio" class="form-radio" name="group_life_experience" wire:model="group_life_experience" value="yes">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -212,11 +212,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="sex" value="male" checked>
+                                <input type="radio" class="form-radio" name="eye_sight" value="no" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="sex" value="female">
+                                    <input type="radio" class="form-radio" name="eye_sight" value="yes">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -229,11 +229,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="color_blindness" value="color_blindness" checked>
+                                <input type="radio" class="form-radio" name="color_blindness" value="no" wire:model="color_blindness" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="color_blindness" value="color_blindness">
+                                    <input type="radio" class="form-radio" name="color_blindness" value="yes" wire:model="color_blindness">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -249,11 +249,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="tattoo" value="tattoo" checked>
+                                <input type="radio" class="form-radio" name="tattoo" value="no" wire:model="tattoo"checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="tattoo" value="tattoo">
+                                    <input type="radio" class="form-radio" name="tattoo" value="yes" wire:model="tattoo">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -266,11 +266,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="drinking" value="drinking" checked>
+                                <input type="radio" class="form-radio" name="drinking" value="no" wire:model="drinking" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="drinking" value="drinking">
+                                    <input type="radio" class="form-radio" name="drinking" value="yes" wire:model="drinking">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -286,11 +286,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="smoking" value="smoking" checked>
+                                <input type="radio" class="form-radio" name="smoking" value="no" wire:model="smoking" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="smoking" value="smoking">
+                                    <input type="radio" class="form-radio" name="smoking" wire:model="smoking" value="yes">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -303,11 +303,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="medical_history" value="medical_history" checked>
+                                <input type="radio" class="form-radio" name="medical_history" value="no" wire:model="medical_history" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="medical_history" value="medical_history">
+                                    <input type="radio" class="form-radio" name="medical_history" wire:model="medical_history" value="yes">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
