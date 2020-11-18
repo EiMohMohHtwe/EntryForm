@@ -21,9 +21,17 @@
                                 Birthday
                             </label>
                             <input type="date" class="w-64 appearance-none block bg-blue-200 text-gray-700 border border-gray-200 py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="name" name="name" wire:model="name">
+                            id="birthday" name="birthday" wire:model="birthday">
                         </div>
                     </div>
+                </td>
+
+                <td>
+                    <div class="md:flex ml-48">
+                        <input type ="file" class="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded"
+                        wire:model ="image" >
+                        </input>
+                    </div>                 
                 </td>
             </tr>
 
@@ -60,7 +68,7 @@
                                 Confirm Email
                             </label>
                             <input class="w-64 appearance-none block bg-blue-200 text-gray-700 border border-gray-200 py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="Confirm Email" name="Confirm Email" wire:model="Confirm Email">
+                            id="confirm_email" name="confirm_email" wire:model="confirm_email">
                         </div>
                     </div>
                 </td>
@@ -74,11 +82,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="sex" value="male">
+                                <input type="radio" class="form-radio" name="gender" value="male" checked>
                                 <span class="ml-2">Male</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="sex" value="female">
+                                    <input type="radio" class="form-radio" name="gender" value="female">
                                 <span class="ml-2">Female</span>
                             </label>
                         </div>
@@ -116,7 +124,7 @@
                                 Blood Type
                             </label>
                             <select class="w-64 appearance-none block bg-blue-200 text-gray-700 border border-gray-200 py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="favorite_programming_language" name="favorite_programming_language">
+                            id="blood_type" name="blood_type">
                                 <option>Please Select</option>
                                 <option>B</option>
                                 <option>A</option>
@@ -167,11 +175,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="sex" value="male">
+                                <input type="radio" class="form-radio" name="cooking" value="cooking" checked>
                                 <span class="ml-2">No</span>
-                                    </label>
-                                    <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="sex" value="female">
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                    <input type="radio" class="form-radio" name="cooking" value="cooking">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -184,11 +192,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="sex" value="male">
+                                <input type="radio" class="form-radio" name="group_life_experience" value="group_life_experience" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="sex" value="female">
+                                    <input type="radio" class="form-radio" name="group_life_experience" value="group_life_experience">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -204,7 +212,7 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="sex" value="male">
+                                <input type="radio" class="form-radio" name="sex" value="male" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
@@ -221,11 +229,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="sex" value="male">
+                                <input type="radio" class="form-radio" name="color_blindness" value="color_blindness" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="sex" value="female">
+                                    <input type="radio" class="form-radio" name="color_blindness" value="color_blindness">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -241,11 +249,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="sex" value="male">
+                                <input type="radio" class="form-radio" name="tattoo" value="tattoo" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="sex" value="female">
+                                    <input type="radio" class="form-radio" name="tattoo" value="tattoo">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -258,11 +266,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="sex" value="male">
+                                <input type="radio" class="form-radio" name="drinking" value="drinking" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="sex" value="female">
+                                    <input type="radio" class="form-radio" name="drinking" value="drinking">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -278,11 +286,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="sex" value="male">
+                                <input type="radio" class="form-radio" name="smoking" value="smoking" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="sex" value="female">
+                                    <input type="radio" class="form-radio" name="smoking" value="smoking">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -295,11 +303,11 @@
                         </label>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio" name="sex" value="male">
+                                <input type="radio" class="form-radio" name="medical_history" value="medical_history" checked>
                                 <span class="ml-2">No</span>
                                     </label>
                                     <label class="inline-flex items-center ml-6">
-                                    <input type="radio" class="form-radio" name="sex" value="female">
+                                    <input type="radio" class="form-radio" name="medical_history" value="medical_history">
                                 <span class="ml-2">Yes</span>
                             </label>
                         </div>
@@ -333,7 +341,7 @@
                                 Roll Number
                             </label>
                             <input class="w-64 appearance-none block bg-blue-200 text-gray-700 border border-gray-200 py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="rollnumber" name="rollnumber" wire:model="rollnumber">
+                            id="roll_number" name="roll_number" wire:model="roll_number">
                         </div>
                     </div>
                 </td>
@@ -435,7 +443,7 @@
                                             To
                                         </label>
                                         <input type="date" class="w-32 appearance-none block bg-blue-200 text-gray-700 border border-gray-200 py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                        id="jhs_period_to" name="jhs_period_to" wire:model="jhs_period_to">
+                                        id="hs_period_to" name="hs_period_to" wire:model="hs_period_to">
                                     </div>
                                 </div>
                             </td>
@@ -449,7 +457,7 @@
                                 School Name
                             </label>
                             <input class="w-64 appearance-none block bg-blue-200 text-gray-700 border border-gray-200 py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="jhs_school_name" name="jhs_school_name" wire:model="jhs_school_name">
+                            id="hs_school_name" name="hs_school_name" wire:model="hs_school_name">
                         </div>
                     </div>
                 </td>
@@ -460,7 +468,7 @@
                                Status
                             </label>
                             <select class="w-64 appearance-none block bg-blue-200 text-gray-700 border border-gray-200 py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="jhs_status" name="jhs_status">
+                            id="hs_status" name="hs_status">
                                 <option>Please Select</option>
                                 <option>B</option>
                                 <option>A</option>
@@ -475,7 +483,7 @@
                                 Science & Economics
                             </label>
                             <input class="w-64 appearance-none block bg-blue-200 text-gray-700 border border-gray-200 py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="jhs_school_name" name="jhs_school_name" wire:model="jhs_school_name">
+                            id="hs_science_ecnomics" name="hs_science_ecnomics" wire:model="hs_science_ecnomics">
                         </div>
                     </div>
                 </td>
@@ -488,7 +496,8 @@
                     <label colspan="2" class="ml-10 font-bold">Maticulation Examination Pass Certicate(*pdf)</label>
                 </td>
                 <td>
-                    <input type ="file" class="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded">
+                    <input type ="file" class="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded"
+                    wire:model ="hs_file">
                     </input>
                 </td>
             </tr>
@@ -532,7 +541,7 @@
                     <div class="flex flex-wrap -mx-3 mb-6 ml-8">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                School Name
+                                University Name
                             </label>
                             <input class="w-64 appearance-none block bg-blue-200 text-gray-700 border border-gray-200 py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                             id="univ_school_name" name="univ_school_name" wire:model="univ_school_name">
@@ -590,7 +599,8 @@
                     <label colspan="2" class="ml-10 font-bold">Maticulation Examination Pass Certicate(*pdf)</label>
                 </td>
                 <td>
-                    <input type ="file" class="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded">
+                    <input type ="file" class="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded"
+                    wire:model ="univ_file">
                     </input>
                 </td>
             </tr>
@@ -598,17 +608,98 @@
 
         <hr class="border-2 mb-10 mt-8">
 
-        <table class="table table-form ml-10 mr-10 mt-2">
-            <tr>
-                <td>
-                    <p>What was the happiest thing that happened in your life?</p>
-                    <textarea class="w-fill" ></textarea>
-                </td>
-                <td>
+        <table>
 
-                </td>
-            </tr>
-        </table>
+        <div class="items-center justify-items-auto">
+            <div class="grid grid-cols-2 justify-items-auto">
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        What was the happiest thing that happened in your life?
+                    </label>  
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        What was the hardest thing that happened in your life?
+                    </label>
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
+                    name="question_happiest_event"  wire:model="question_happiest_event"></textarea>
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
+                    name="question_hardest_event"  wire:model="question_hardest_event"></textarea>
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        What was the thing that you have tried the best in your life?
+                    </label>  
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        What was the thing that you worked hard other than school activity?
+                    </label>  
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
+                    name="question_worked_hard"  wire:model="question_worked_hard"></textarea>
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
+                    name="question_outside_of_school"  wire:model="question_outside_of_school"></textarea>
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    Do you want to return to Myanmar in the future of remain in Japan?
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    What type of person that you can't get along with?
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
+                    name="question_future_workplace"  wire:model="question_future_workplace"></textarea>
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
+                    name="question_poor_person"  wire:model="question_poor_person"></textarea>
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    What are your strong points?
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    What are your weak points?
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
+                    name="question_speciality" wire:model="question_speciality"></textarea>
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
+                    name="question_weak"  wire:model="question_weak"></textarea>
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    What do you value the most in work?
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    What types of IT technology that you learned at university?
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
+                    name="question_emphasis"  wire:model="question_emphasis"></textarea>
+                </div>
+                <div class="text-gray-700 bg-gray-400 flex justify-center items-center px-4 py-2">
+                    <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
+                    name="question_it_technology"  wire:model="question_it_technology"></textarea>
+                </div>
+            </div>
+        </div>
+        </table><br>
 
-    <div>
+        <hr class="border-2 mb-10 mt-8">
+
+        <div class="flex items-center w-fill justify-center mb-10">
+            <button class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">
+                Register
+            </button>
+        </div>
+    </div>
 </form>
