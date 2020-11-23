@@ -20,7 +20,9 @@ class Registeration extends Component
     public $gender;
     public $hobby;
     public $phone;
+    public $blood_type;
     public $favorite_subject;
+    public $favorite_programming_language;
     public $cooking;
     public $group_life_experience;
     public $color_blindness;
@@ -33,14 +35,18 @@ class Registeration extends Component
     public $jhs_period_from;
     public $jhs_period_to;
     public $jhs_school_name;
+    public $jhs_status;
     public $hs_period_from;
     public $hs_period_to;
     public $hs_school_name;
+    public $hs_status;
     public $hs_science_ecnomics;
     public $hs_file;
     public $univ_period_from;
     public $univ_period_to;
     public $univ_school_name;
+    public $univ_status;
+    public $univ_school_year;
     public $univ_faculty_department;
     public $univ_file;
     public $question_happiest_event;
@@ -57,14 +63,64 @@ class Registeration extends Component
     public function submit()
     {
         $this->validate([
-            'image' => 'image|max:1024',
-            'hs_file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048',
-            'univ_file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
+                'image' => 'image|max:1024',
+                'name' => 'required|max:30',
+                'birthday' => 'required',
+                'address' => 'required|max:300',
+                'email' => 'required|email|unique:applicants',
+                'confirm_email' => 'required|email',
+                'gender' => 'required',
+                'hobby' => 'required',
+                'phone' => 'required|max:20',
+                'favorite_subject' => 'required',
+                'cooking' => 'required',
+                'group_life_experience' => 'required',
+                'color_blindness' => 'required',
+                'tattoo' => 'required',
+                'drinking' => 'required',
+                'smoking' => 'required',
+                'medical_history' => 'required',
+                'gpa' => 'required',
+                'roll_number' => 'required',
+                'jhs_period_from' => 'required',
+                'jhs_period_to' => 'required',
+                'jhs_school_name' => 'required',
+                'hs_period_from' => 'required',
+                'hs_period_to' => 'required',
+                'hs_school_name' => 'required',
+                'hs_science_ecnomics' => 'required',
+                'hs_file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048',
+                'univ_period_from' => 'required',
+                'univ_period_to' => 'required',
+                'univ_school_name' => 'required',
+                'univ_faculty_department' =>  'required',
+                'univ_file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048',
+                'question_happiest_event' => 'required|max:500',
+                'question_hardest_event' => 'required|max:500',
+                'question_worked_hard' => 'required|max:500',
+                'question_outside_of_school' => 'required|max:500',
+                'question_future_workplace' => 'required|max:500',
+                'question_poor_person' => 'required|max:500',
+                'question_emphasis' => 'required|max:500',
+                'question_weak' => 'required|max:500',
+                'question_speciality'  => 'required|max:500',
+                'question_it_technology'  => 'required|max:500'
         ]);
 
-        $this->image->store('images');
-        $this->hs_file->store('images');
-        $this->univ_file->store('images');
+        $folder = uniqid(now()->format('Ymd').'_');
+        
+        $profileImg = $this->image;
+        $profileImgName = 'profile_img.' . $profileImg->getClientOriginalExtension();
+
+        $hsDocument  = $this->hs_file;
+        $hsDocumentName  = 'hs_document.' . $hsDocument ->getClientOriginalExtension();
+
+        $univDocument = $this->univ_file;
+        $univDocumentName  = 'univ_document.' . $univDocument->getClientOriginalExtension();
+
+        $this->image->storeAs('ApplicantsDocuments/'.$folder, $profileImgName, 'public');
+        $this->hs_file->storeAs('ApplicantsDocuments/'.$folder, $hsDocumentName, 'public');
+        $this->univ_file->storeAs('ApplicantsDocuments/'.$folder, $univDocumentName, 'public');
 
         $register = new Applicant();
 
@@ -76,7 +132,9 @@ class Registeration extends Component
         $register->gender = $this->gender;
         $register->hobby = $this->hobby;
         $register->phone = $this->phone;
+        $register->blood_type = $this->blood_type;
         $register->favorite_subject = $this->favorite_subject;
+        $register->favorite_programming_language = $this->favorite_programming_language;
         $register->cooking = $this->cooking;
         $register->group_life_experience = $this->group_life_experience;
         $register->color_blindness = $this->color_blindness;
@@ -89,13 +147,17 @@ class Registeration extends Component
         $register->jhs_period_from = $this->jhs_period_from;
         $register->jhs_period_to = $this->jhs_period_to;
         $register->jhs_school_name = $this->jhs_school_name;
+        $register->jhs_status = $this->jhs_status;
         $register->hs_period_from = $this->hs_period_from;
         $register->hs_period_to = $this->hs_period_to;
         $register->hs_school_name = $this->hs_school_name;
+        $register->hs_status = $this->hs_status;
         $register->hs_science_ecnomics = $this->hs_science_ecnomics;
         $register->univ_period_from = $this->univ_period_from;
         $register->univ_period_to = $this->univ_period_to;
         $register->univ_school_name = $this->univ_school_name;
+        $register->univ_status = $this->univ_status;
+        $register->univ_school_year = $this->univ_school_year;
         $register->univ_faculty_department = $this->univ_faculty_department;
         $register->question_happiest_event = $this->question_happiest_event;
         $register->question_hardest_event = $this->question_hardest_event;
@@ -110,7 +172,9 @@ class Registeration extends Component
 
         $register->save();
 
-        return redirect()->to('/');
+        session()->flash('notification', 'Success to save');
+
+        return redirect()->to('/register');
     }
 
     public function render()
