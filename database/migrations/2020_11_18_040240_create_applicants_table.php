@@ -51,6 +51,7 @@ class CreateApplicantsTable extends Migration
             $table->string('univ_school_name');
             $table->string('univ_status');
             $table->string('univ_school_year');
+            $table->string('upload_dir')->nullable();
             $table->string('univ_faculty_department');
             $table->string('question_happiest_event');
             $table->string('question_hardest_event');

@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Applicant extends Model
+class Family_Structure extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-
-    public function families()
+    public function applicant()
     {
-        return $this->hasMany(Family_Structure::class);
+        return $this->belongsTo(Applicant::class);
     }
 }

@@ -9,7 +9,7 @@
     </head>
     <body class="bg-gray-400">
     
-        <livewire:registeration>
+        <livewire:registeration />
 
         <livewire:scripts>
 
