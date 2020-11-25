@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Applicant;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Tester\ApplicationTester;
 
 class Registeration extends Component
@@ -60,6 +61,28 @@ class Registeration extends Component
     public $question_emphasis;
     public $question_it_technology;
 
+    public $family_name;
+    public $relationship;
+    public $age;
+    public $job;
+    public $live_together;
+    public $agreement;
+
+    public $families = [];
+    public $i = 1;
+
+    public function add($i)
+    {
+        $i = $i + 1;
+        $this->i = $i;
+        array_push($this->families, $i);
+    }
+
+    public function remove($i)
+    {
+        unset($this->families[$i]);
+    }
+
     protected $rules = [
         'image' => 'image|max:1024',
         'name' => 'required|max:30',
@@ -69,7 +92,7 @@ class Registeration extends Component
         'confirm_email' => 'required|email',
         'gender' => 'required',
         'hobby' => 'required',
-        'phone' => 'required|max:20|numeric',
+        'phone' => 'required|max:20',
         'blood_type' => 'required',
         'favorite_subject' => 'required',
         'favorite_programming_language' => 'required',
@@ -109,6 +132,15 @@ class Registeration extends Component
         'question_it_technology'  => 'required|max:500'
     ];
 
+    protected $messages = [
+        'family_name.*.required' => 'The family name Address cannot be empty.',
+        'relationship.*.required' => 'Relationship cannot be empty.',
+        'age.*.required' => 'Age cannot be empty.',
+        'job.*.required' => 'Job cannot be empty.',
+        'live_together.*.required' => 'Live Together cannot be empty.',
+        'agreement.*.required' => 'Agreement cannot be empty.',
+    ];
+
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
@@ -116,73 +148,94 @@ class Registeration extends Component
 
     public function submit()
     {
-        $this->validate();
+        DB::transaction(function (){
+            $this->validate();
 
-        $folder = uniqid(now()->format('Ymd').'_');
-        
-        $profileImg = $this->image;
-        $profileImgName = 'profile_img.' . $profileImg->getClientOriginalExtension();
+            $folder = uniqid(now()->format('Ymd').'_');
+            
+            $profileImg = $this->image;
+            $profileImgName = 'profile_img.' . $profileImg->getClientOriginalExtension();
 
-        $hsDocument  = $this->hs_file;
-        $hsDocumentName  = 'hs_document.' . $hsDocument ->getClientOriginalExtension();
+            $hsDocument  = $this->hs_file;
+            $hsDocumentName  = 'hs_document.' . $hsDocument ->getClientOriginalExtension();
 
-        $univDocument = $this->univ_file;
-        $univDocumentName  = 'univ_document.' . $univDocument->getClientOriginalExtension();
+            $univDocument = $this->univ_file;
+            $univDocumentName  = 'univ_document.' . $univDocument->getClientOriginalExtension();
 
-        $this->image->storeAs('ApplicantsDocuments/'.$folder, $profileImgName, 'public');
-        $this->hs_file->storeAs('ApplicantsDocuments/'.$folder, $hsDocumentName, 'public');
-        $this->univ_file->storeAs('ApplicantsDocuments/'.$folder, $univDocumentName, 'public');
+            $this->image->storeAs('ApplicantsDocuments/'.$folder, $profileImgName, 'public');
+            $this->hs_file->storeAs('ApplicantsDocuments/'.$folder, $hsDocumentName, 'public');
+            $this->univ_file->storeAs('ApplicantsDocuments/'.$folder, $univDocumentName, 'public');
 
-        $register = new Applicant();
+            $register = new Applicant();
 
-        $register->name = $this->name;
-        $register->birthday = $this->birthday;
-        $register->address = $this->address;
-        $register->email = $this->email;
-        $register->confirm_email = $this->confirm_email;
-        $register->gender = $this->gender;
-        $register->hobby = $this->hobby;
-        $register->phone = $this->phone;
-        $register->blood_type = $this->blood_type;
-        $register->favorite_subject = $this->favorite_subject;
-        $register->favorite_programming_language = $this->favorite_programming_language;
-        $register->cooking = $this->cooking;
-        $register->group_life_experience = $this->group_life_experience;
-        $register->color_blindness = $this->color_blindness;
-        $register->tattoo = $this->tattoo;
-        $register->drinking = $this->drinking;
-        $register->smoking = $this->smoking;
-        $register->medical_history = $this->medical_history;
-        $register->gpa = $this->gpa;
-        $register->roll_number = $this->roll_number;
-        $register->jhs_period_from = $this->jhs_period_from;
-        $register->jhs_period_to = $this->jhs_period_to;
-        $register->jhs_school_name = $this->jhs_school_name;
-        $register->jhs_status = $this->jhs_status;
-        $register->hs_period_from = $this->hs_period_from;
-        $register->hs_period_to = $this->hs_period_to;
-        $register->hs_school_name = $this->hs_school_name;
-        $register->hs_status = $this->hs_status;
-        $register->hs_science_ecnomics = $this->hs_science_ecnomics;
-        $register->univ_period_from = $this->univ_period_from;
-        $register->univ_period_to = $this->univ_period_to;
-        $register->univ_school_name = $this->univ_school_name;
-        $register->univ_status = $this->univ_status;
-        $register->univ_school_year = $this->univ_school_year;
-        $register->upload_dir = $folder;
-        $register->univ_faculty_department = $this->univ_faculty_department;
-        $register->question_happiest_event = $this->question_happiest_event;
-        $register->question_hardest_event = $this->question_hardest_event;
-        $register->question_worked_hard = $this->question_worked_hard;
-        $register->question_outside_of_school = $this->question_outside_of_school;
-        $register->question_future_workplace = $this->question_future_workplace;
-        $register->question_poor_person = $this->question_poor_person;
-        $register->question_speciality = $this->question_speciality;
-        $register->question_weak = $this->question_weak;
-        $register->question_emphasis = $this->question_emphasis;
-        $register->question_it_technology = $this->question_it_technology;
+            $register->name = $this->name;
+            $register->birthday = $this->birthday;
+            $register->address = $this->address;
+            $register->email = $this->email;
+            $register->confirm_email = $this->confirm_email;
+            $register->gender = $this->gender;
+            $register->hobby = $this->hobby;
+            $register->phone = $this->phone;
+            $register->blood_type = $this->blood_type;
+            $register->favorite_subject = $this->favorite_subject;
+            $register->favorite_programming_language = $this->favorite_programming_language;
+            $register->cooking = $this->cooking;
+            $register->group_life_experience = $this->group_life_experience;
+            $register->color_blindness = $this->color_blindness;
+            $register->tattoo = $this->tattoo;
+            $register->drinking = $this->drinking;
+            $register->smoking = $this->smoking;
+            $register->medical_history = $this->medical_history;
+            $register->gpa = $this->gpa;
+            $register->roll_number = $this->roll_number;
+            $register->jhs_period_from = $this->jhs_period_from;
+            $register->jhs_period_to = $this->jhs_period_to;
+            $register->jhs_school_name = $this->jhs_school_name;
+            $register->jhs_status = $this->jhs_status;
+            $register->hs_period_from = $this->hs_period_from;
+            $register->hs_period_to = $this->hs_period_to;
+            $register->hs_school_name = $this->hs_school_name;
+            $register->hs_status = $this->hs_status;
+            $register->hs_science_ecnomics = $this->hs_science_ecnomics;
+            $register->univ_period_from = $this->univ_period_from;
+            $register->univ_period_to = $this->univ_period_to;
+            $register->univ_school_name = $this->univ_school_name;
+            $register->univ_status = $this->univ_status;
+            $register->univ_school_year = $this->univ_school_year;
+            $register->upload_dir = $folder;
+            $register->univ_faculty_department = $this->univ_faculty_department;
+            $register->question_happiest_event = $this->question_happiest_event;
+            $register->question_hardest_event = $this->question_hardest_event;
+            $register->question_worked_hard = $this->question_worked_hard;
+            $register->question_outside_of_school = $this->question_outside_of_school;
+            $register->question_future_workplace = $this->question_future_workplace;
+            $register->question_poor_person = $this->question_poor_person;
+            $register->question_speciality = $this->question_speciality;
+            $register->question_weak = $this->question_weak;
+            $register->question_emphasis = $this->question_emphasis;
+            $register->question_it_technology = $this->question_it_technology;
 
-        $register->save();
+            $register->save();
+
+            if($this->family_name != null) {
+                $validateData = $this->validate([
+                    'family_name.0'     => 'required',
+                    'relationship.0'    => 'required',
+                    'age.0'             => 'required',
+                    'job.0'             => 'required',
+                    'live_together.0'   => 'required',
+                    'agreement.0'       => 'required',
+                    'family_name.*'     => 'required',
+                    'relationship.*'    => 'required',
+                    'age.*'             => 'required',
+                    'job.*'             => 'required',
+                    'live_together.*'   => 'required',
+                    'agreement.*'       => 'required',
+                ]);
+
+                $register->addFamilies($register->id, $validateData);
+            }
+        });
 
         session()->flash('notification', 'Success to save');
 

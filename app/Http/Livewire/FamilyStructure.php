@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Family_Structure;
+use App\Models\Family;
 use Livewire\Component;
 
-class FamilyStructure extends Component
+class Familystructure extends Component
 {
     public $family_name;
     public $relationship;
@@ -14,22 +14,58 @@ class FamilyStructure extends Component
     public $live_together;
     public $agreement;
 
-    public function submit()
+    public $families = [];
+    public $i = 1;
+
+    public function add($i)
     {
-        $family = new Family_Structure();
+        $i = $i + 1;
+        $this->i = $i;
+        array_push($this->families, $i);
+    }
 
-        $family->family_name = $this->family_name;
-        $family->relationship = $this->relationship;
-        $family->age = $this->age;
-        $family->job = $this->job;
-        $family->live_together = $this->live_together;
-        $family->agreement = $this->agreement;
+    public function remove($i)
+    {
+        unset($this->families[$i]);
+    }
 
-        $family->save();
+    public function store()
+    {
+        $validatedData = $this->validate([
+            'family_name.0' => 'required',
+            'relationship.0' => 'required',
+            'age.0' => 'required',
+            'job.0' => 'required',
+            'live_together.0' => 'required',
+            'agreement.0' => 'required',
+            'family_name.*' => 'required',
+            'relationship.*' => 'required',
+            'age.*' => 'required',
+            'job.*' => 'required',
+            'live_together.*' => 'required',
+            'agreement.*' => 'required',
+        ]);
+
+        foreach ($this->family_name as $key => $value) {
+            Family::create(['family_name' => $this->family_name[$key],
+            'relationship' => $this->relationship[$key],
+            'age' => $this->age[$key],
+            'job' => $this->job[$key],
+            'live_together' => $this->live_together[$key],
+            'agreement' => $this->agreement[$key]
+            ]);
+        }
+
+        $this->families = [] ;
+
+        Family::create($validatedData);
+
+        return redirect()->to('/register');
+       
     }
 
     public function render()
     {
-        return view('livewire.family-structure');
+        return view('livewire.familystructure');
     }
 }

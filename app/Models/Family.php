@@ -5,9 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Family_Structure extends Model
+class Family extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'applicant_id', 'family_name', 'relationship', 'age', 'job', 'live_together', 'agreement'
+    ];
 
     public function applicant()
     {
