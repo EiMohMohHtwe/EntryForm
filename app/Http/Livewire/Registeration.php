@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Applicant;
+use App\Models\Family;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
@@ -166,56 +167,56 @@ class Registeration extends Component
             $this->hs_file->storeAs('ApplicantsDocuments/'.$folder, $hsDocumentName, 'public');
             $this->univ_file->storeAs('ApplicantsDocuments/'.$folder, $univDocumentName, 'public');
 
-            $register = new Applicant();
+            $applicant = new Applicant();
 
-            $register->name = $this->name;
-            $register->birthday = $this->birthday;
-            $register->address = $this->address;
-            $register->email = $this->email;
-            $register->confirm_email = $this->confirm_email;
-            $register->gender = $this->gender;
-            $register->hobby = $this->hobby;
-            $register->phone = $this->phone;
-            $register->blood_type = $this->blood_type;
-            $register->favorite_subject = $this->favorite_subject;
-            $register->favorite_programming_language = $this->favorite_programming_language;
-            $register->cooking = $this->cooking;
-            $register->group_life_experience = $this->group_life_experience;
-            $register->color_blindness = $this->color_blindness;
-            $register->tattoo = $this->tattoo;
-            $register->drinking = $this->drinking;
-            $register->smoking = $this->smoking;
-            $register->medical_history = $this->medical_history;
-            $register->gpa = $this->gpa;
-            $register->roll_number = $this->roll_number;
-            $register->jhs_period_from = $this->jhs_period_from;
-            $register->jhs_period_to = $this->jhs_period_to;
-            $register->jhs_school_name = $this->jhs_school_name;
-            $register->jhs_status = $this->jhs_status;
-            $register->hs_period_from = $this->hs_period_from;
-            $register->hs_period_to = $this->hs_period_to;
-            $register->hs_school_name = $this->hs_school_name;
-            $register->hs_status = $this->hs_status;
-            $register->hs_science_ecnomics = $this->hs_science_ecnomics;
-            $register->univ_period_from = $this->univ_period_from;
-            $register->univ_period_to = $this->univ_period_to;
-            $register->univ_school_name = $this->univ_school_name;
-            $register->univ_status = $this->univ_status;
-            $register->univ_school_year = $this->univ_school_year;
-            $register->upload_dir = $folder;
-            $register->univ_faculty_department = $this->univ_faculty_department;
-            $register->question_happiest_event = $this->question_happiest_event;
-            $register->question_hardest_event = $this->question_hardest_event;
-            $register->question_worked_hard = $this->question_worked_hard;
-            $register->question_outside_of_school = $this->question_outside_of_school;
-            $register->question_future_workplace = $this->question_future_workplace;
-            $register->question_poor_person = $this->question_poor_person;
-            $register->question_speciality = $this->question_speciality;
-            $register->question_weak = $this->question_weak;
-            $register->question_emphasis = $this->question_emphasis;
-            $register->question_it_technology = $this->question_it_technology;
+            $applicant->name = $this->name;
+            $applicant->birthday = $this->birthday;
+            $applicant->address = $this->address;
+            $applicant->email = $this->email;
+            $applicant->confirm_email = $this->confirm_email;
+            $applicant->gender = $this->gender;
+            $applicant->hobby = $this->hobby;
+            $applicant->phone = $this->phone;
+            $applicant->blood_type = $this->blood_type;
+            $applicant->favorite_subject = $this->favorite_subject;
+            $applicant->favorite_programming_language = $this->favorite_programming_language;
+            $applicant->cooking = $this->cooking;
+            $applicant->group_life_experience = $this->group_life_experience;
+            $applicant->color_blindness = $this->color_blindness;
+            $applicant->tattoo = $this->tattoo;
+            $applicant->drinking = $this->drinking;
+            $applicant->smoking = $this->smoking;
+            $applicant->medical_history = $this->medical_history;
+            $applicant->gpa = $this->gpa;
+            $applicant->roll_number = $this->roll_number;
+            $applicant->jhs_period_from = $this->jhs_period_from;
+            $applicant->jhs_period_to = $this->jhs_period_to;
+            $applicant->jhs_school_name = $this->jhs_school_name;
+            $applicant->jhs_status = $this->jhs_status;
+            $applicant->hs_period_from = $this->hs_period_from;
+            $applicant->hs_period_to = $this->hs_period_to;
+            $applicant->hs_school_name = $this->hs_school_name;
+            $applicant->hs_status = $this->hs_status;
+            $applicant->hs_science_ecnomics = $this->hs_science_ecnomics;
+            $applicant->univ_period_from = $this->univ_period_from;
+            $applicant->univ_period_to = $this->univ_period_to;
+            $applicant->univ_school_name = $this->univ_school_name;
+            $applicant->univ_status = $this->univ_status;
+            $applicant->univ_school_year = $this->univ_school_year;
+            $applicant->upload_dir = $folder;
+            $applicant->univ_faculty_department = $this->univ_faculty_department;
+            $applicant->question_happiest_event = $this->question_happiest_event;
+            $applicant->question_hardest_event = $this->question_hardest_event;
+            $applicant->question_worked_hard = $this->question_worked_hard;
+            $applicant->question_outside_of_school = $this->question_outside_of_school;
+            $applicant->question_future_workplace = $this->question_future_workplace;
+            $applicant->question_poor_person = $this->question_poor_person;
+            $applicant->question_speciality = $this->question_speciality;
+            $applicant->question_weak = $this->question_weak;
+            $applicant->question_emphasis = $this->question_emphasis;
+            $applicant->question_it_technology = $this->question_it_technology;
 
-            $register->save();
+            $applicant->save();
 
             if($this->family_name != null) {
                 $validateData = $this->validate([
@@ -233,7 +234,17 @@ class Registeration extends Component
                     'agreement.*'       => 'required',
                 ]);
 
-                $register->addFamilies($register->id, $validateData);
+                foreach ($this->family_name as $key => $value) {
+                   Family::create([
+                       'applicant_id' => $applicant->id,
+                       'family_name' => $this->family_name[$key],
+                       'relationship' => $this->relationship[$key],
+                       'age' => $this->age[$key],
+                       'job' => $this->job[$key],
+                       'live_together' => $this->live_together[$key],
+                       'agreement' => $this->agreement[$key]
+                   ]);
+               }
             }
         });
 
